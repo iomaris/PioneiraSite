@@ -6,31 +6,25 @@
     <title>Pioneira | Andaimes e Equipamentos para Construção Civil</title>
     <meta name="description" content="Locação e venda de andaimes, escoramentos e equipamentos para construção civil em Manaus. 40 anos de experiência, segurança e qualidade.">
     <meta name="keywords" content="andaimes, locação, equipamentos, construção civil, Manaus">
-    
-    <!-- Google Fonts -->
+
+   
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
-    <!-- CSS -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <!-- ==================== HEADER / NAVEGAÇÃO ==================== -->
-    <header class="header">
+    <header class="header" id="header">
         <nav class="navbar">
             <div class="navbar-container">
                 <div class="navbar-logo">
-                    <img src="logo.png" alt="" class="logo-img">
-                    <span class="logo-text">Pioneira</span>
+                    <a href="#home">
+                        <img src="imagens/logo.png" class="logo-img" alt="Pioneira Logo">
+                    </a>
                 </div>
-
-                <button class="navbar-toggle" id="navbarToggle" aria-label="Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-
                 <ul class="navbar-menu" id="navbarMenu">
                     <li><a href="#home" class="nav-link">Home</a></li>
                     <li><a href="#empresa" class="nav-link">Empresa</a></li>
@@ -42,140 +36,363 @@
                     <li><a href="#contato" class="nav-link">Contato</a></li>
                 </ul>
 
-                <a href="#orcamento" class="btn btn-primary navbar-cta">Orçamento</a>
+                <!-- CTA + TOGGLE - DIREITA -->
+                <div class="navbar-right">
+                    <a href="#orcamento" class="btn btn-nav-cta">
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                        Orçamento
+                    </a>
+                    <button class="navbar-toggle" id="navbarToggle" aria-label="Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+
             </div>
         </nav>
     </header>
+
+    <!-- ==================== HERO ==================== -->
     <section class="hero" id="home">
         <video class="hero-video" autoplay muted loop playsinline>
             <source src="video/obra.mp4" type="video/mp4">
-            Seu navegador não suporta vídeos HTML5.
         </video>
         <div class="hero-overlay"></div>
+
+        <div class="hero-particles">
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+        </div>
+
         <div class="hero-content">
-            <h1 class="hero-title">PIONEIRA</h1>
-            <p class="hero-subtitle">Equipamentos de qualidade para construção civil. Atendemos obras em toda a região com segurança e rapidez.</p>
-            <button class="btn btn-secondary" onclick="document.getElementById('orcamento').scrollIntoView({behavior: 'smooth'})">Solicitar Orçamento</button>
+            <div class="hero-badge">
+                <i class="fa-solid fa-star"></i>
+                Mais de 40 anos de excelência
+            </div>
+            <h1 class="hero-title">
+                <span class="hero-title-line">PIONEIRA</span>
+                <span class="hero-title-sub">ANDAIMES &amp; EQUIPAMENTOS</span>
+            </h1>
+            <p class="hero-subtitle">Soluções completas para construção civil em Manaus. Segurança, qualidade e agilidade na entrega.</p>
+            <div class="hero-actions">
+                <a href="#orcamento" class="btn btn-hero-primary">
+                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                    Solicitar Orçamento
+                </a>
+                <a href="#equipamentos" class="btn btn-hero-secondary">
+                    <i class="fa-solid fa-hard-hat"></i>
+                    Ver Equipamentos
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <strong>40+</strong>
+                    <span>Anos</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <strong>1000+</strong>
+                    <span>Obras</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <strong>100%</strong>
+                    <span>Satisfação</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-scroll-indicator">
+            <span></span>
         </div>
     </section>
+
+    <!-- ==================== SOBRE A EMPRESA ==================== -->
     <section class="sobre" id="empresa">
         <div class="container">
-            <h2 class="section-title">Sobre a Empresa</h2>
-            <div class="sobre-content">
-                <div class="sobre-text">
-                    <p>A Pioneira atua há mais de 40 anos fornecendo equipamentos para construção civil em Manaus. Trabalhamos com locação e venda de andaimes, escoramentos e equipamentos essenciais para obras, garantindo qualidade, segurança e agilidade na entrega.</p>
-                    <p>Somos especializados em fornecer soluções completas para canteiros de obra, desde a fase preliminar até as etapas de acabamento e pintura.</p>
+            <div class="sobre-grid">
+                <div class="sobre-image-wrapper reveal-left">
+                    <div class="sobre-image-frame">
+                        <img src="imagens/frentedaempresa.jpg" alt="Frente da Empresa Pioneira" class="sobre-img">
+                        <div class="sobre-image-badge">
+                            <i class="fa-solid fa-building"></i>
+                            <span>Nossa Sede</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="sobre-stats">
-                    <div class="stat-box">
-                        <h3>40+</h3>
+                <div class="sobre-text-wrapper reveal-right">
+                    <div class="section-label">Sobre Nós</div>
+                    <h2 class="section-title-left">Tradição e Confiança na Construção Civil</h2>
+                    <p>A <strong>Pioneira</strong> atua há mais de 40 anos fornecendo equipamentos para construção civil em Manaus. Trabalhamos com locação e venda de andaimes, escoramentos e equipamentos essenciais para obras, garantindo qualidade, segurança e agilidade na entrega.</p>
+                    <p>Somos especializados em fornecer soluções completas para canteiros de obra, desde a fase preliminar até as etapas de acabamento e pintura.</p>
+                    <div class="sobre-features">
+                        <div class="sobre-feature">
+                            <i class="fa-solid fa-check-circle"></i>
+                            <span>Equipamentos certificados e revisados</span>
+                        </div>
+                        <div class="sobre-feature">
+                            <i class="fa-solid fa-check-circle"></i>
+                            <span>Entrega e montagem em toda Manaus</span>
+                        </div>
+                        <div class="sobre-feature">
+                            <i class="fa-solid fa-check-circle"></i>
+                            <span>Orçamento gratuito e sem compromisso</span>
+                        </div>
+                        <div class="sobre-feature">
+                            <i class="fa-solid fa-check-circle"></i>
+                            <span>Suporte técnico especializado</span>
+                        </div>
+                    </div>
+                    <a href="#orcamento" class="btn btn-primary">Fale Conosco</a>
+                </div>
+            </div>
+
+            <div class="stats-bar reveal-up">
+                <div class="stat-item">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <div>
+                        <h3 class="counter" data-target="40">0</h3>
                         <p>Anos de Experiência</p>
                     </div>
-                    <div class="stat-box">
-                        <h3>1000+</h3>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <i class="fa-solid fa-helmet-safety"></i>
+                    <div>
+                        <h3 class="counter" data-target="1000">0</h3>
                         <p>Obras Atendidas</p>
                     </div>
-                    <div class="stat-box">
-                        <h3>100%</h3>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <i class="fa-solid fa-users"></i>
+                    <div>
+                        <h3 class="counter" data-target="500">0</h3>
+                        <p>Clientes Satisfeitos</p>
+                    </div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <i class="fa-solid fa-star"></i>
+                    <div>
+                        <h3>100<span class="stat-suffix">%</span></h3>
                         <p>Satisfação Garantida</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- ==================== VANTAGENS ==================== -->
     <section class="vantagens">
         <div class="container">
-            <h2 class="section-title">Por que escolher nossa empresa?</h2>
+            <div class="section-label-center">Por que nos escolher</div>
+            <h2 class="section-title">Diferenciais que nos destacam</h2>
             <div class="vantagens-grid">
-                <div class="vantagem-card">
-                    <div class="vantagem-icon">🔒</div>
+                <div class="vantagem-card reveal-up" style="--delay: 0.1s">
+                    <div class="vantagem-icon"><i class="fa-solid fa-shield-halved"></i></div>
                     <h3>Equipamentos Seguros</h3>
-                    <p>Equipamentos revisados e dentro das normas de segurança da construção civil.</p>
+                    <p>Todos os equipamentos são revisados e certificados conforme as normas de segurança da construção civil.</p>
+                    <div class="vantagem-line"></div>
                 </div>
-                <div class="vantagem-card">
-                    <div class="vantagem-icon">⚡</div>
+                <div class="vantagem-card reveal-up" style="--delay: 0.2s">
+                    <div class="vantagem-icon"><i class="fa-solid fa-truck-fast"></i></div>
                     <h3>Entrega Rápida</h3>
-                    <p>Levamos os equipamentos diretamente até sua obra em Manaus.</p>
+                    <p>Levamos os equipamentos diretamente até sua obra em Manaus com agilidade e pontualidade.</p>
+                    <div class="vantagem-line"></div>
                 </div>
-                <div class="vantagem-card">
-                    <div class="vantagem-icon">💰</div>
-                    <h3>Melhor Custo</h3>
-                    <p>Preços competitivos e orçamento gratuito para sua obra.</p>
+                <div class="vantagem-card reveal-up" style="--delay: 0.3s">
+                    <div class="vantagem-icon"><i class="fa-solid fa-money-bill-wave"></i></div>
+                    <h3>Melhor Custo-Benefício</h3>
+                    <p>Preços competitivos e orçamento gratuito. Economize sem abrir mão da qualidade e segurança.</p>
+                    <div class="vantagem-line"></div>
                 </div>
-                <div class="vantagem-card">
-                    <div class="vantagem-icon">🏆</div>
-                    <h3>Experiência</h3>
-                    <p>Mais de 40 anos atendendo obras e construtoras em Manaus.</p>
+                <div class="vantagem-card reveal-up" style="--delay: 0.4s">
+                    <div class="vantagem-icon"><i class="fa-solid fa-award"></i></div>
+                    <h3>40 Anos de Experiência</h3>
+                    <p>Décadas atendendo obras e construtoras em Manaus com excelência e comprometimento.</p>
+                    <div class="vantagem-line"></div>
+                </div>
+                <div class="vantagem-card reveal-up" style="--delay: 0.5s">
+                    <div class="vantagem-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                    <h3>Montagem Profissional</h3>
+                    <p>Nossa equipe técnica realiza a montagem e desmontagem com segurança e eficiência.</p>
+                    <div class="vantagem-line"></div>
+                </div>
+                <div class="vantagem-card reveal-up" style="--delay: 0.6s">
+                    <div class="vantagem-icon"><i class="fa-solid fa-headset"></i></div>
+                    <h3>Suporte Dedicado</h3>
+                    <p>Atendimento personalizado e suporte técnico disponível para todas as suas necessidades.</p>
+                    <div class="vantagem-line"></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ==================== EQUIPAMENTOS ==================== -->
-    <section class="equipamentos" id="equipamentos">
-        <div class="container">
-            <h2 class="section-title">Principais Equipamentos</h2>
-            <div class="equipamentos-grid">
-                <div class="equipamento-card">
-                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=400&h=300&fit=crop" alt="Andaime Tubular">
-                    <h3>Andaime Tubular</h3>
-                    <p>Ideal para obras e reformas de médio e grande porte.</p>
-                    <button class="btn btn-outline" onclick="document.getElementById('orcamento' ).scrollIntoView({behavior: 'smooth'})">Orçamento</button>
+  <!-- ==================== EQUIPAMENTOS ==================== -->
+<section class="equipamentos" id="equipamentos">
+    <div class="container">
+        <div class="section-label-center">Nosso Portfólio</div>
+        <h2 class="section-title">Principais Equipamentos</h2>
+        <p class="section-subtitle">Equipamentos de alta qualidade para todas as etapas da sua obra</p>
+        
+        <div class="equipamentos-grid">
+            
+            <!-- 1. ANDAIME -->
+            <div class="equipamento-card reveal-up" style="--delay: 0.1s">
+                <div class="equipamento-img-wrapper">
+                    <img src="imagens/andaime-tubular.jpeg" alt="Andaime Simples e Reforçado">
+                    <div class="equipamento-overlay">
+                        <a href="#orcamento" class="btn btn-overlay">Solicitar Orçamento</a>
+                    </div>
+                    <div class="equipamento-badge">Mais Alugado</div>
                 </div>
-                <div class="equipamento-card">
-                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&h=300&fit=crop" alt="Escoramento Metálico">
-                    <h3>Escoramento Metálico</h3>
-                    <p>Alta resistência e segurança para estruturas temporárias.</p>
-                    <button class="btn btn-outline" onclick="document.getElementById('orcamento' ).scrollIntoView({behavior: 'smooth'})">Orçamento</button>
-                </div>
-                <div class="equipamento-card">
-                    <img src="https://images.unsplash.com/photo-1590650046871-92c887180603?w=400&h=300&fit=crop" alt="Betoneira">
-                    <h3>Betoneira</h3>
-                    <p>Equipamentos para preparo de concreto de qualidade.</p>
-                    <button class="btn btn-outline" onclick="document.getElementById('orcamento' ).scrollIntoView({behavior: 'smooth'})">Orçamento</button>
-                </div>
-                <div class="equipamento-card">
-                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400&h=300&fit=crop" alt="Plataforma Elevatória">
-                    <h3>Plataforma Elevatória</h3>
-                    <p>Acesso seguro a alturas para trabalhos de acabamento.</p>
-                    <button class="btn btn-outline" onclick="document.getElementById('orcamento' ).scrollIntoView({behavior: 'smooth'})">Orçamento</button>
-                </div>
-                <div class="equipamento-card">
-                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400&h=300&fit=crop" alt="Compactadores">
-                    <h3>Compactadores</h3>
-                    <p>Máquinas para compactação de solo e pavimentação.</p>
-                    <button class="btn btn-outline" onclick="document.getElementById('orcamento' ).scrollIntoView({behavior: 'smooth'})">Orçamento</button>
-                </div>
-                <div class="equipamento-card">
-                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400&h=300&fit=crop" alt="Escadas Profissionais">
-                    <h3>Escadas Profissionais</h3>
-                    <p>Escadas de alumínio e ferro para trabalhos em altura.</p>
-                    <button class="btn btn-outline" onclick="document.getElementById('orcamento' ).scrollIntoView({behavior: 'smooth'})">Orçamento</button>
+                <div class="equipamento-info">
+                    <h3>Andaime Simples e Reforçado</h3>
+                    <p>Ideal para obras e reformas de médio e grande porte. Alta resistência e segurança.</p>
+                    <div class="equipamento-footer">
+                        <span class="equipamento-tag"><i class="fa-solid fa-tag"></i> Locação</span>
+                        <button class="btn btn-outline" onclick="document.getElementById('orcamento').scrollIntoView({behavior:'smooth'})">Orçamento</button>
+                    </div>
                 </div>
             </div>
+
+            <!-- 2. SAPATAS -->
+            <div class="equipamento-card reveal-up" style="--delay: 0.2s">
+                <div class="equipamento-img-wrapper">
+                    <img src="imagens/sapatas.webp" alt="Sapatas com Regulagem">
+                    <div class="equipamento-overlay">
+                        <a href="#orcamento" class="btn btn-overlay">Solicitar Orçamento</a>
+                    </div>
+                </div>
+                <div class="equipamento-info">
+                    <h3>Sapatas com Regulagem</h3>
+                    <p>Alta resistência e segurança para estruturas temporárias em qualquer tipo de obra.</p>
+                    <div class="equipamento-footer">
+                        <span class="equipamento-tag"><i class="fa-solid fa-tag"></i> Locação</span>
+                        <button class="btn btn-outline" onclick="document.getElementById('orcamento').scrollIntoView({behavior:'smooth'})">Orçamento</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. ESCORAS -->
+            <div class="equipamento-card reveal-up" style="--delay: 0.3s">
+                <div class="equipamento-img-wrapper">
+                    <img src="imagens/escora metalica.jpg" alt="Escoras 3M/4M/5M">
+                    <div class="equipamento-overlay">
+                        <a href="#orcamento" class="btn btn-overlay">Solicitar Orçamento</a>
+                    </div>
+                </div>
+                <div class="equipamento-info">
+                    <h3>Escoras 3M/4M/5M</h3>
+                    <p>Equipamentos para suporte de estruturas com qualidade e eficiência em qualquer obra.</p>
+                    <div class="equipamento-footer">
+                        <span class="equipamento-tag"><i class="fa-solid fa-tag"></i> Locação</span>
+                        <button class="btn btn-outline" onclick="document.getElementById('orcamento').scrollIntoView({behavior:'smooth'})">Orçamento</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. CAIXA DE AR -->
+            <div class="equipamento-card reveal-up" style="--delay: 0.4s">
+                <div class="equipamento-img-wrapper">
+                    <img src="imagens/caixa arcondicionado.jpg" alt="Caixa de Ar-condicionado">
+                    <div class="equipamento-overlay">
+                        <a href="#orcamento" class="btn btn-overlay">Solicitar Orçamento</a>
+                    </div>
+                    <div class="equipamento-badge">Destaque</div>
+                </div>
+                <div class="equipamento-info">
+                    <h3>Caixa de Ar-condicionado</h3>
+                    <p>Acesso seguro a alturas para trabalhos de acabamento e manutenção predial.</p>
+                    <div class="equipamento-footer">
+                        <span class="equipamento-tag"><i class="fa-solid fa-tag"></i> Venda</span>
+                        <button class="btn btn-outline" onclick="document.getElementById('orcamento').scrollIntoView({behavior:'smooth'})">Orçamento</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. COBOGO -->
+            <div class="equipamento-card reveal-up" style="--delay: 0.5s">
+                <div class="equipamento-img-wrapper">
+                    <img src="imagens/pioneira andaimes e Equipamentos.png" alt="Cobogo Usinado">
+                    <div class="equipamento-overlay">
+                        <a href="#orcamento" class="btn btn-overlay">Solicitar Orçamento</a>
+                    </div>
+                </div>
+                <div class="equipamento-info">
+                    <h3>Cobogo Usinado</h3>
+                    <p>Produtos de alta qualidade para acabamento e design arquitetônico.</p>
+                    <div class="equipamento-footer">
+                        <span class="equipamento-tag"><i class="fa-solid fa-tag"></i> Venda</span>
+                        <button class="btn btn-outline" onclick="document.getElementById('orcamento').scrollIntoView({behavior:'smooth'})">Orçamento</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. MOURÃO -->
+            <div class="equipamento-card reveal-up" style="--delay: 0.6s">
+                <div class="equipamento-img-wrapper">
+                    <img src="imagens/mourao.png" alt="Mourão">
+                    <div class="equipamento-overlay">
+                        <a href="#orcamento" class="btn btn-overlay">Solicitar Orçamento</a>
+                    </div>
+                </div>
+                <div class="equipamento-info">
+                    <h3>Mourão</h3>
+                    <p>Produtos estruturais de alta qualidade para construção e acabamento.</p>
+                    <div class="equipamento-footer">
+                        <span class="equipamento-tag"><i class="fa-solid fa-tag"></i> Venda</span>
+                        <button class="btn btn-outline" onclick="document.getElementById('orcamento').scrollIntoView({behavior:'smooth'})">Orçamento</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- ==================== LOCAÇÃO ==================== -->
     <section class="locacao" id="locacao">
+        <div class="locacao-bg-overlay"></div>
         <div class="container">
-            <h2 class="section-title">Como Funciona a Locação</h2>
-            <div class="locacao-content">
-                <div class="locacao-item">
-                    <h3>Prazos Flexíveis</h3>
-                    <p>Oferecemos locação para 7, 15 e 30 dias, conforme sua necessidade.</p>
+            <div class="section-label-center">Como Funciona</div>
+            <h2 class="section-title">Processo de Locação Simples</h2>
+            <p class="section-subtitle">Em poucos passos, seu equipamento estará na obra</p>
+            <div class="locacao-steps">
+                <div class="locacao-step reveal-up" style="--delay: 0.1s">
+                    <div class="step-number">01</div>
+                    <div class="step-icon"><i class="fa-solid fa-phone"></i></div>
+                    <h3>Solicite o Orçamento</h3>
+                    <p>Entre em contato pelo formulário, WhatsApp ou telefone. Orçamento gratuito e sem compromisso.</p>
                 </div>
-                <div class="locacao-item">
-                    <h3>Transporte Incluído</h3>
-                    <p>Entrega e recolhimento do equipamento diretamente em sua obra.</p>
+                <div class="step-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+                <div class="locacao-step reveal-up" style="--delay: 0.2s">
+                    <div class="step-number">02</div>
+                    <div class="step-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                    <h3>Escolha o Prazo</h3>
+                    <p>Prazos flexíveis: 7, 15 ou 30 dias. Adaptamos conforme a necessidade da sua obra.</p>
                 </div>
-                <div class="locacao-item">
-                    <h3>Montagem Profissional</h3>
-                    <p>Nossa equipe realiza montagem e desmontagem dos equipamentos.</p>
+                <div class="step-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+                <div class="locacao-step reveal-up" style="--delay: 0.3s">
+                    <div class="step-number">03</div>
+                    <div class="step-icon"><i class="fa-solid fa-truck"></i></div>
+                    <h3>Entrega na Obra</h3>
+                    <p>Entregamos e montamos os equipamentos diretamente no seu canteiro de obras em Manaus.</p>
                 </div>
-                <div class="locacao-item">
-                    <h3>Orçamento Gratuito</h3>
-                    <p>Solicite um orçamento sem compromisso para sua obra.</p>
+                <div class="step-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+                <div class="locacao-step reveal-up" style="--delay: 0.4s">
+                    <div class="step-number">04</div>
+                    <div class="step-icon"><i class="fa-solid fa-rotate-left"></i></div>
+                    <h3>Recolhimento</h3>
+                    <p>Ao finalizar, nossa equipe realiza a desmontagem e recolhimento sem custo adicional.</p>
                 </div>
             </div>
         </div>
@@ -184,48 +401,120 @@
     <!-- ==================== OBRAS ==================== -->
     <section class="obras" id="obras">
         <div class="container">
+            <div class="section-label-center">Portfólio</div>
             <h2 class="section-title">Obras Realizadas</h2>
             <p class="section-subtitle">Conheça alguns dos projetos que atendemos com excelência</p>
             <div class="obras-grid">
-                <div class="obra-card">
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop" alt="Obra Residencial">
-                    <h3>Prédios Residenciais</h3>
-                    <p>Atendimento em construções de edifícios residenciais de médio e grande porte.</p>
+                <div class="obra-card reveal-up" style="--delay: 0.1s">
+                    <div class="obra-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop" alt="Prédios Residenciais">
+                        <div class="obra-overlay">
+                            <div class="obra-overlay-content">
+                                <h3>Prédios Residenciais</h3>
+                                <p>Edifícios de médio e grande porte</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="obra-info">
+                        <span class="obra-category"><i class="fa-solid fa-building"></i> Residencial</span>
+                        <h3>Prédios Residenciais</h3>
+                        <p>Atendimento em construções de edifícios residenciais de médio e grande porte em toda Manaus.</p>
+                    </div>
                 </div>
-                <div class="obra-card">
-                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400&h=300&fit=crop" alt="Obra Industrial">
-                    <h3>Obras Industriais</h3>
-                    <p>Suporte técnico para construção e manutenção de estruturas industriais.</p>
+                <div class="obra-card reveal-up" style="--delay: 0.2s">
+                    <div class="obra-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=400&fit=crop" alt="Obras Industriais">
+                        <div class="obra-overlay">
+                            <div class="obra-overlay-content">
+                                <h3>Obras Industriais</h3>
+                                <p>Estruturas de grande porte</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="obra-info">
+                        <span class="obra-category"><i class="fa-solid fa-industry"></i> Industrial</span>
+                        <h3>Obras Industriais</h3>
+                        <p>Suporte técnico para construção e manutenção de estruturas industriais de grande porte.</p>
+                    </div>
                 </div>
-                <div class="obra-card">
-                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&h=300&fit=crop" alt="Reformas Comerciais">
-                    <h3>Reformas Comerciais</h3>
-                    <p>Equipamentos para reformas e revitalizações de espaços comerciais.</p>
+                <div class="obra-card reveal-up" style="--delay: 0.3s">
+                    <div class="obra-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&h=400&fit=crop" alt="Reformas Comerciais">
+                        <div class="obra-overlay">
+                            <div class="obra-overlay-content">
+                                <h3>Reformas Comerciais</h3>
+                                <p>Revitalização de espaços</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="obra-info">
+                        <span class="obra-category"><i class="fa-solid fa-store"></i> Comercial</span>
+                        <h3>Reformas Comerciais</h3>
+                        <p>Equipamentos para reformas e revitalizações de espaços comerciais com qualidade e segurança.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==================== CLIENTES ==================== -->
+    <!-- ==================== CLIENTES / DEPOIMENTOS ==================== -->
     <section class="clientes" id="clientes">
         <div class="container">
+            <div class="section-label-center">Depoimentos</div>
             <h2 class="section-title">Empresas que Confiam em Nós</h2>
+            <p class="section-subtitle">A satisfação dos nossos clientes é a nossa maior conquista</p>
             <div class="clientes-grid">
-                <div class="cliente-card">
-                    <h3>Construtora A</h3>
-                    <p>"Excelente atendimento e equipamentos de qualidade. Recomendamos!"</p>
+                <div class="cliente-card reveal-up" style="--delay: 0.1s">
+                    <div class="cliente-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="cliente-depoimento">"Excelente atendimento e equipamentos de qualidade. A Pioneira é nossa parceira de confiança há anos. Recomendamos a todos!"</p>
+                    <div class="cliente-info">
+                        <div class="cliente-avatar"><i class="fa-solid fa-building"></i></div>
+                        <div>
+                            <h3>Bom Preço</h3>
+                            <span>Manaus, AM</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="cliente-card">
-                    <h3>Construtora B</h3>
-                    <p>"Entrega rápida e profissionalismo em todos os atendimentos."</p>
+                <div class="cliente-card reveal-up" style="--delay: 0.2s">
+                    <div class="cliente-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="cliente-depoimento">"Entrega rápida e profissionalismo em todos os atendimentos. Os equipamentos chegam sempre no prazo e em perfeito estado."</p>
+                    <div class="cliente-info">
+                        <div class="cliente-avatar"><i class="fa-solid fa-hard-hat"></i></div>
+                        <div>
+                            <h3>AF Arquitetura</h3>
+                            <span>Manaus, AM</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="cliente-card">
-                    <h3>Construtora C</h3>
-                    <p>"Parceria de confiança há muitos anos. Muito satisfeitos!"</p>
+                <div class="cliente-card reveal-up" style="--delay: 0.3s">
+                    <div class="cliente-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="cliente-depoimento">"Parceria de confiança há muitos anos. Muito satisfeitos com o serviço e com a equipe técnica sempre disponível."</p>
+                    <div class="cliente-info">
+                        <div class="cliente-avatar"><i class="fa-solid fa-city"></i></div>
+                        <div>
+                            <h3>Força Construtiva</h3>
+                            <span>Manaus, AM</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="cliente-card">
-                    <h3>Construtora D</h3>
-                    <p>"Preços competitivos e segurança garantida em todas as obras."</p>
+                <div class="cliente-card reveal-up" style="--delay: 0.4s">
+                    <div class="cliente-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="cliente-depoimento">"Preços competitivos e segurança garantida em todas as obras. A Pioneira é referência no mercado de Manaus."</p>
+                    <div class="cliente-info">
+                        <div class="cliente-avatar"><i class="fa-solid fa-landmark"></i></div>
+                        <div>
+                            <h3>Igreja Arquidiocese</h3>
+                            <span>Manaus, AM</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -234,22 +523,54 @@
     <!-- ==================== BLOG ==================== -->
     <section class="blog" id="blog">
         <div class="container">
-            <h2 class="section-title">Blog</h2>
+            <div class="section-label-center">Conteúdo</div>
+            <h2 class="section-title">Blog &amp; Dicas</h2>
+            <p class="section-subtitle">Fique por dentro das novidades e melhores práticas da construção civil</p>
             <div class="blog-grid">
-                <article class="blog-card">
-                    <h3>Como Escolher o Andaime Ideal para sua Obra</h3>
-                    <p>Dicas importantes para selecionar o melhor tipo de andaime conforme o tipo de construção.</p>
-                    <a href="#" class="blog-link">Leia mais →</a>
+                <article class="blog-card reveal-up" style="--delay: 0.1s">
+                    <div class="blog-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=500&h=280&fit=crop" alt="Andaime Ideal">
+                        <div class="blog-category-tag">Dicas</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="fa-regular fa-calendar"></i> Jan 2026</span>
+                            <span><i class="fa-regular fa-clock"></i> 5 min</span>
+                        </div>
+                        <h3>Como Escolher o Andaime Ideal para sua Obra</h3>
+                        <p>Dicas importantes para selecionar o melhor tipo de andaime conforme o tipo de construção.</p>
+                        <a href="#" class="blog-link">Leia mais <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
                 </article>
-                <article class="blog-card">
-                    <h3>Segurança em Obras: Normas e Certificações</h3>
-                    <p>Conheça as principais normas de segurança que todos os equipamentos devem atender.</p>
-                    <a href="#" class="blog-link">Leia mais →</a>
+                <article class="blog-card reveal-up" style="--delay: 0.2s">
+                    <div class="blog-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=280&fit=crop" alt="Segurança em Obras">
+                        <div class="blog-category-tag">Segurança</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="fa-regular fa-calendar"></i> Fev 2026</span>
+                            <span><i class="fa-regular fa-clock"></i> 7 min</span>
+                        </div>
+                        <h3>Segurança em Obras: Normas e Certificações</h3>
+                        <p>Conheça as principais normas de segurança que todos os equipamentos devem atender.</p>
+                        <a href="#" class="blog-link">Leia mais <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
                 </article>
-                <article class="blog-card">
-                    <h3>Diferença entre Escoramento e Andaime</h3>
-                    <p>Entenda as diferenças técnicas e de aplicação entre esses dois tipos de equipamento.</p>
-                    <a href="#" class="blog-link">Leia mais →</a>
+                <article class="blog-card reveal-up" style="--delay: 0.3s">
+                    <div class="blog-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=280&fit=crop" alt="Escoramento vs Andaime">
+                        <div class="blog-category-tag">Técnico</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="fa-regular fa-calendar"></i> Mar 2026</span>
+                            <span><i class="fa-regular fa-clock"></i> 6 min</span>
+                        </div>
+                        <h3>Diferença entre Escoramento e Andaime</h3>
+                        <p>Entenda as diferenças técnicas e de aplicação entre esses dois tipos de equipamento.</p>
+                        <a href="#" class="blog-link">Leia mais <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
                 </article>
             </div>
         </div>
@@ -258,102 +579,134 @@
     <!-- ==================== ORÇAMENTO ==================== -->
     <section class="orcamento" id="orcamento">
         <div class="container">
-            <h2 class="section-title">Solicitar Orçamento</h2>
-            <form class="orcamento-form" id="orcamentoForm">
-                <div class="form-group">
-                    <label for="nome">Nome Completo</label>
-                    <input type="text" id="nome" name="nome" required>
+            <div class="orcamento-wrapper">
+                <div class="orcamento-info reveal-left">
+                    <div class="section-label">Contato Rápido</div>
+                    <h2 class="section-title-left">Solicite seu Orçamento Gratuito</h2>
+                    <p>Preencha o formulário ao lado ou entre em contato diretamente. Nossa equipe responderá em até 24 horas.</p>
+                    <div class="orcamento-contacts">
+                        <a href="tel:+559291364240" class="orcamento-contact-item">
+                            <div class="oc-icon"><i class="fa-solid fa-phone"></i></div>
+                            <div>
+                                <strong>Telefone</strong>
+                                <span>(92) 9136-4240</span>
+                            </div>
+                        </a>
+                        <a href="https://wa.me/559291364240" target="_blank" class="orcamento-contact-item">
+                            <div class="oc-icon whatsapp"><i class="fa-brands fa-whatsapp"></i></div>
+                            <div>
+                                <strong>WhatsApp</strong>
+                                <span>(92) 9136-4240</span>
+                            </div>
+                        </a>
+                        <a href="mailto:pioneiraandaimes2@gmail.com" class="orcamento-contact-item">
+                            <div class="oc-icon"><i class="fa-solid fa-envelope"></i></div>
+                            <div>
+                                <strong>E-mail</strong>
+                                <span>pioneiraandaimes2@gmail.com</span>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="empresa">Empresa</label>
-                    <input type="text" id="empresa" name="empresa" required>
+                <div class="orcamento-form-wrapper reveal-right">
+                    <form class="orcamento-form" id="orcamentoForm">
+                        <h3>Formulário de Orçamento</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nome"><i class="fa-solid fa-user"></i> Nome Completo</label>
+                                <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="empresa"><i class="fa-solid fa-building"></i> Empresa</label>
+                                <input type="text" id="empresa" name="empresa" placeholder="Nome da empresa" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="telefone"><i class="fa-solid fa-phone"></i> Telefone</label>
+                                <input type="tel" id="telefone" name="telefone" placeholder="(92) 9 0000-0000" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="equipamento"><i class="fa-solid fa-hard-hat"></i> Equipamento</label>
+                                <select id="equipamento" name="equipamento" required>
+                                    <option value="">Selecione um equipamento</option>
+                                    <option value="andaime-tubular">Andaime Tubular</option>
+                                    <option value="escoramento">Escoramento Metálico</option>
+                                    <option value="betoneira">Betoneira</option>
+                                    <option value="plataforma">Plataforma Elevatória</option>
+                                    <option value="compactador">Compactador</option>
+                                    <option value="escada">Escada Profissional</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="tempo"><i class="fa-solid fa-calendar-days"></i> Tempo de Locação</label>
+                            <select id="tempo" name="tempo" required>
+                                <option value="">Selecione o período</option>
+                                <option value="7-dias">7 dias</option>
+                                <option value="15-dias">15 dias</option>
+                                <option value="30-dias">30 dias</option>
+                                <option value="outro">Outro período</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensagem"><i class="fa-solid fa-message"></i> Mensagem</label>
+                            <textarea id="mensagem" name="mensagem" rows="4" placeholder="Descreva sua necessidade..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            Enviar Orçamento
+                        </button>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label for="telefone">Telefone</label>
-                    <input type="tel" id="telefone" name="telefone" required>
-                </div>
-                <div class="form-group">
-                    <label for="equipamento">Equipamento Desejado</label>
-                    <select id="equipamento" name="equipamento" required>
-                        <option value="">Selecione um equipamento</option>
-                        <option value="andaime-tubular">Andaime Tubular</option>
-                        <option value="escoramento">Escoramento Metálico</option>
-                        <option value="betoneira">Betoneira</option>
-                        <option value="plataforma">Plataforma Elevatória</option>
-                        <option value="compactador">Compactador</option>
-                        <option value="escada">Escada Profissional</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="tempo">Tempo de Locação</label>
-                    <select id="tempo" name="tempo" required>
-                        <option value="">Selecione o período</option>
-                        <option value="7-dias">7 dias</option>
-                        <option value="15-dias">15 dias</option>
-                        <option value="30-dias">30 dias</option>
-                        <option value="outro">Outro período</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="mensagem">Mensagem</label>
-                    <textarea id="mensagem" name="mensagem" rows="5"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Enviar Orçamento</button>
-            </form>
+            </div>
         </div>
     </section>
 
     <!-- ==================== CONTATO ==================== -->
- 
-                <!-- Seção superior com mapa e endereço -->
-               <section class="contato" id="contato">
-    <div class="contato-background">
-        <div class="contato-container">
-            <!-- Seção superior com mapa e endereço -->
-            <div class="contato-top">
-                <div class="contato-map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3985.853241999999!2d-60.00214358658425!3d-2.9992764938389147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x926c2e5c5c5c5c5d%3A0x5c5c5c5c5c5c5c5c!2sAv.%20Arquiteto%20Jos%C3%A9%20Henriques%20B.%20Rodrigues%2C%203541%20-%20Monte%20das%20Oliveiras%2C%20Manaus%20-%20AM%2C%2069093-149!5e0!3m2!1spt-BR!2sbr!4v1234567890" width="100%" height="300" style="border:none; border-radius: 0.75rem;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <section class="contato" id="contato">
+        <div class="contato-background">
+            <div class="contato-container">
+                <div class="section-label-center contato-label">Localização</div>
+                <h2 class="section-title contato-title">Onde Estamos</h2>
+                <div class="contato-top">
+                    <div class="contato-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3985.853241999999!2d-60.00214358658425!3d-2.9992764938389147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x926c2e5c5c5c5c5d%3A0x5c5c5c5c5c5c5c5c!2sAv.%20Arquiteto%20Jos%C3%A9%20Henriques%20B.%20Rodrigues%2C%203541%20-%20Monte%20das%20Oliveiras%2C%20Manaus%20-%20AM%2C%2069093-149!5e0!3m2!1spt-BR!2sbr!4v1234567890" width="100%" height="300" style="border:none; border-radius: 0.75rem;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <div class="contato-endereco">
+                        <div class="contato-icon-title">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <h3>ENDEREÇO</h3>
+                        </div>
+                        <p>Av. Arquiteto José Henriques B. Rodrigues, 3541<br>Monte das Oliveiras<br>Manaus/AM - CEP: 69093-149</p>
+                    </div>
                 </div>
-                <div class="contato-endereco">
-                    <h3>ENDEREÇO</h3>
-                    <p>Av. Arquiteto José Henriques B. Rodrigues, 3541  
-Monte das Oliveiras  
-Manaus/AM - CEP: 69093-149</p>
-                </div>
-            </div>
-
-                <!-- Seção inferior com email e telefone -->
                 <div class="contato-bottom">
                     <div class="contato-email">
-                        <h3>ENDEREÇO DE E-MAIL</h3>
-                        <p><a href="pioneiraandaimes2@gmail.com">pioneiraandaimes2@gmail.com</a></p>
+                        <i class="fa-solid fa-envelope"></i>
+                        <h3>E-MAIL</h3>
+                        <p><a href="mailto:pioneiraandaimes2@gmail.com">pioneiraandaimes2@gmail.com</a></p>
                     </div>
                     <div class="contato-telefone">
-                        <h3>NÚMERO DE TELEFONE</h3>
+                        <i class="fa-solid fa-phone"></i>
+                        <h3>TELEFONE</h3>
                         <p><a href="tel:+559291364240">(92) 9136-4240</a></p>
                     </div>
                 </div>
-
-                <!-- Redes Sociais -->
                 <div class="contato-sociais">
-                    </a>
                     <a href="https://wa.me/559291364240" target="_blank" class="social-icon" title="WhatsApp">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a6.963 6.963 0 0 0-6.923 6.987c0 1.547.38 3.061 1.105 4.413L2.9 22.05l4.9-1.577c1.283.658 2.729 1.007 4.242 1.007h.004c3.857 0 6.996-3.137 6.992-6.99 0-1.863-.723-3.613-2.040-4.929-1.318-1.317-3.073-2.041-4.929-2.041"/>
                         </svg>
                     </a>
                     <a href="https://www.instagram.com/pioneira_andaimes_/" target="_blank" class="social-icon" title="Instagram">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163C8.756 0 8.331.012 7.052.07 2.696.278.278 2.579.07 7.052.012 8.331 0 8.756 0 12s.012 3.669.07 4.948c.208 4.474 2.626 6.875 7.052 7.083 1.28.058 1.704.07 4.948.07s3.668-.012 4.948-.07c4.426-.208 6.844-2.609 7.052-7.083.058-1.28.07-1.704.07-4.948s-.012-3.669-.07-4.948c-.208-4.474-2.626-6.875-7.052-7.083C15.668.012 15.244 0 12 0z"/>
                             <path d="M12 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.322a1.44 1.44 0 1 1 0-2.881 1.44 1.44 0 0 1 0 2.881z"/>
                         </svg>
                     </a>
-                
-                        </svg>
-                    </a>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -361,39 +714,68 @@ Manaus/AM - CEP: 69093-149</p>
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Pioneira</h4>
-                    <p>Locação e venda de equipamentos para construção civil em Manaus.</p>
+                <div class="footer-section footer-brand">
+                    <img src="imagens/logo.png" alt="Pioneira Logo" class="footer-logo">
+                    <p>Locação e venda de equipamentos para construção civil em Manaus. 40 anos de tradição e excelência.</p>
+                    <div class="footer-socials">
+                        <a href="https://wa.me/559291364240" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/pioneira_andaimes_/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" target="_blank" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    </div>
                 </div>
                 <div class="footer-section">
                     <h4>Links Rápidos</h4>
                     <ul>
-                        <li><a href="#equipamentos">Equipamentos</a></li>
-                        <li><a href="#locacao">Locação</a></li>
-                        <li><a href="#obras">Obras</a></li>
-                        <li><a href="#contato">Contato</a></li>
+                        <li><a href="#home"><i class="fa-solid fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#empresa"><i class="fa-solid fa-chevron-right"></i> Empresa</a></li>
+                        <li><a href="#equipamentos"><i class="fa-solid fa-chevron-right"></i> Equipamentos</a></li>
+                        <li><a href="#locacao"><i class="fa-solid fa-chevron-right"></i> Locação</a></li>
+                        <li><a href="#obras"><i class="fa-solid fa-chevron-right"></i> Obras</a></li>
+                        <li><a href="#contato"><i class="fa-solid fa-chevron-right"></i> Contato</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Redes Sociais</h4>
+                    <h4>Equipamentos</h4>
                     <ul>
-                        <li><a href="#" target="_blank">Facebook</a></li>
-                        <li><a href="#" target="_blank">Instagram</a></li>
-                        <li><a href="#" target="_blank">WhatsApp</a></li>
+                        <li><a href="#equipamentos"><i class="fa-solid fa-chevron-right"></i> Andaimes Tubulares</a></li>
+                        <li><a href="#equipamentos"><i class="fa-solid fa-chevron-right"></i> Escoramentos</a></li>
+                        <li><a href="#equipamentos"><i class="fa-solid fa-chevron-right"></i> Betoneiras</a></li>
+                        <li><a href="#equipamentos"><i class="fa-solid fa-chevron-right"></i> Plataformas</a></li>
+                        <li><a href="#equipamentos"><i class="fa-solid fa-chevron-right"></i> Compactadores</a></li>
+                        <li><a href="#equipamentos"><i class="fa-solid fa-chevron-right"></i> Escadas</a></li>
                     </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <div class="footer-contact-list">
+                        <div class="footer-contact-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>Av. Arq. José Henriques B. Rodrigues, 3541 - Monte das Oliveiras, Manaus/AM</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <a href="tel:+559291364240">(92) 9136-4240</a>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <a href="mailto:pioneiraandaimes2@gmail.com">pioneiraandaimes2@gmail.com</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Pioneira. Todos os direitos reservados.</p>
+                <p>&copy; 2026 Pioneira Andaimes. Todos os direitos reservados.</p>
+                <p>Desenvolvido com <i class="fa-solid fa-heart" style="color: var(--primary-color);"></i> em Manaus</p>
             </div>
         </div>
     </footer>
 
-    <!-- ==================== WHATSAPP FLUTUANTE ==================== -->
-    <a href="https://wa.me/559291364240" class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    <!-- WhatsApp Flutuante -->
+    <a href="https://wa.me/559291364240" class="whatsapp-float" target="_blank" title="Fale pelo WhatsApp">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a6.963 6.963 0 0 0-6.923 6.987c0 1.547.38 3.061 1.105 4.413L2.9 22.05l4.9-1.577c1.283.658 2.729 1.007 4.242 1.007h.004c3.857 0 6.996-3.137 6.992-6.99 0-1.863-.723-3.613-2.040-4.929-1.318-1.317-3.073-2.041-4.929-2.041"/>
         </svg>
+        <span class="whatsapp-pulse"></span>
     </a>
 
     <!-- JavaScript -->

@@ -1,42 +1,138 @@
 /* ==================== MENU MOBILE ==================== */
-
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const navbarToggle = document.getElementById('navbarToggle');
     const navbarMenu = document.getElementById('navbarMenu');
 
-    // Toggle menu mobile
     if (navbarToggle) {
-        navbarToggle.addEventListener('click', function() {
+        navbarToggle.addEventListener('click', function () {
             navbarMenu.classList.toggle('active');
+            navbarToggle.classList.toggle('active');
         });
     }
 
-    // Fechar menu ao clicar em um link
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
-        link.addEventListener('click', function() {
+        link.addEventListener('click', function () {
             navbarMenu.classList.remove('active');
+            if (navbarToggle) navbarToggle.classList.remove('active');
         });
     });
 
-    // Fechar menu ao clicar fora
-    document.addEventListener('click', function(event) {
+    document.addEventListener('click', function (event) {
         if (!event.target.closest('.navbar-container')) {
             navbarMenu.classList.remove('active');
+            if (navbarToggle) navbarToggle.classList.remove('active');
+        }
+    });
+});
+
+/* ==================== NAVBAR SCROLL ==================== */
+window.addEventListener('scroll', function () {
+    const header = document.getElementById('header');
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+/* ==================== ACTIVE NAV LINK ==================== */
+document.addEventListener('DOMContentLoaded', function () {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    function updateActiveLink() {
+        const scrollPos = window.scrollY + 100;
+        sections.forEach(section => {
+            const top = section.offsetTop;
+            const height = section.offsetHeight;
+            const id = section.getAttribute('id');
+            if (scrollPos >= top && scrollPos < top + height) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + id) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+
+    window.addEventListener('scroll', updateActiveLink);
+    updateActiveLink();
+});
+
+/* ==================== REVEAL ON SCROLL ==================== */
+document.addEventListener('DOMContentLoaded', function () {
+    const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
+
+    const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+
+    revealElements.forEach(el => observer.observe(el));
+});
+
+/* ==================== CONTADOR DE ESTATÍSTICAS ==================== */
+document.addEventListener('DOMContentLoaded', function () {
+    const counters = document.querySelectorAll('.counter');
+
+    const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseInt(el.getAttribute('data-target'));
+                const suffix = el.querySelector('.stat-suffix') ? el.querySelector('.stat-suffix').textContent : '';
+                const duration = 2000;
+                let start = 0;
+                const step = target / (duration / 16);
+
+                const timer = setInterval(() => {
+                    start += step;
+                    if (start >= target) {
+                        el.textContent = target + '+';
+                        clearInterval(timer);
+                    } else {
+                        el.textContent = Math.floor(start) + (start > target * 0.5 ? '+' : '');
+                    }
+                }, 16);
+
+                observer.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => observer.observe(counter));
+});
+
+/* ==================== SMOOTH SCROLL ==================== */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href === '#' || !document.querySelector(href)) return;
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+            const headerHeight = document.querySelector('.header').offsetHeight;
+            const targetPosition = target.offsetTop - headerHeight;
+            window.scrollTo({ top: targetPosition, behavior: 'smooth' });
         }
     });
 });
 
 /* ==================== FORMULÁRIO DE ORÇAMENTO ==================== */
-
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const orcamentoForm = document.getElementById('orcamentoForm');
 
     if (orcamentoForm) {
-        orcamentoForm.addEventListener('submit', function(e) {
+        orcamentoForm.addEventListener('submit', function (e) {
             e.preventDefault();
 
-            // Coletar dados do formulário
             const formData = {
                 nome: document.getElementById('nome').value,
                 empresa: document.getElementById('empresa').value,
@@ -46,328 +142,133 @@ document.addEventListener('DOMContentLoaded', function() {
                 mensagem: document.getElementById('mensagem').value
             };
 
-            // Validar campos obrigatórios
             if (!formData.nome || !formData.empresa || !formData.telefone || !formData.equipamento || !formData.tempo) {
                 mostrarNotificacao('Por favor, preencha todos os campos obrigatórios!', 'erro');
                 return;
             }
 
-            // Validar telefone (formato básico)
             if (!validarTelefone(formData.telefone)) {
                 mostrarNotificacao('Por favor, insira um telefone válido!', 'erro');
                 return;
             }
 
-            // Enviar dados (simulado)
             enviarOrcamento(formData);
         });
     }
 });
 
-// Função para validar telefone
 function validarTelefone(telefone) {
     const regex = /^[\d\s\-\(\)]+$/;
     return regex.test(telefone) && telefone.replace(/\D/g, '').length >= 10;
 }
 
-// Função para enviar orçamento
 function enviarOrcamento(dados) {
-    // Simular envio (em produção, seria uma chamada AJAX/Fetch)
-    console.log('Orçamento enviado:', dados);
-
-    // Mostrar mensagem de sucesso
     mostrarNotificacao('Orçamento enviado com sucesso! Entraremos em contato em breve.', 'sucesso');
-
-    // Limpar formulário
     document.getElementById('orcamentoForm').reset();
-
-    // Rolar para o topo
-    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Função para mostrar notificações
+/* ==================== NOTIFICAÇÕES ==================== */
 function mostrarNotificacao(mensagem, tipo) {
-    // Criar elemento de notificação
     const notificacao = document.createElement('div');
-    notificacao.className = `notificacao notificacao-${tipo}`;
-    notificacao.textContent = mensagem;
-
-    // Adicionar estilos inline (fallback se CSS não carregar)
     notificacao.style.cssText = `
         position: fixed;
-        top: 20px;
+        top: 90px;
         right: 20px;
-        padding: 15px 20px;
-        border-radius: 5px;
+        padding: 1rem 1.5rem;
+        border-radius: 0.5rem;
         color: white;
         font-weight: 600;
-        z-index: 1000;
-        animation: slideIn 0.3s ease;
-        ${tipo === 'sucesso' ? 'background-color: #10b981;' : 'background-color: #ef4444;'}
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.9rem;
+        z-index: 9999;
+        max-width: 360px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        animation: slideInRight 0.4s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        ${tipo === 'sucesso'
+            ? 'background: linear-gradient(135deg, #10b981, #059669); border-left: 4px solid #34d399;'
+            : 'background: linear-gradient(135deg, #ef4444, #dc2626); border-left: 4px solid #f87171;'}
+    `;
+    notificacao.innerHTML = `
+        <i class="fa-solid ${tipo === 'sucesso' ? 'fa-circle-check' : 'fa-circle-exclamation'}" style="font-size:1.2rem;"></i>
+        <span>${mensagem}</span>
     `;
 
-    // Adicionar ao DOM
     document.body.appendChild(notificacao);
 
-    // Remover após 5 segundos
     setTimeout(() => {
-        notificacao.style.animation = 'slideOut 0.3s ease';
-        setTimeout(() => {
-            notificacao.remove();
-        }, 300);
+        notificacao.style.animation = 'slideOutRight 0.4s ease forwards';
+        setTimeout(() => notificacao.remove(), 400);
     }, 5000);
 }
 
-/* ==================== ANIMAÇÕES DE SCROLL ==================== */
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Observador de interseção para animações ao scroll
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
-    };
-
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    // Observar elementos com classe 'fade-in'
-    const fadeInElements = document.querySelectorAll('.equipamento-card, .vantagem-card, .cliente-card, .blog-card');
-    fadeInElements.forEach(el => {
-        observer.observe(el);
-    });
-});
-
-/* ==================== SMOOTH SCROLL PARA ÂNCORAS ==================== */
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        
-        // Ignorar links vazios ou sem alvo
-        if (href === '#' || !document.querySelector(href)) {
-            return;
-        }
-
-        e.preventDefault();
-        const target = document.querySelector(href);
-        
-        if (target) {
-            const headerHeight = document.querySelector('.header').offsetHeight;
-            const targetPosition = target.offsetTop - headerHeight;
-
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-/* ==================== CONTADOR DE ESTATÍSTICAS ==================== */
-
-function animarContador(elemento, alvo, duracao = 2000) {
-    let inicio = 0;
-    const incremento = alvo / (duracao / 16);
-    
-    const timer = setInterval(() => {
-        inicio += incremento;
-        if (inicio >= alvo) {
-            elemento.textContent = alvo;
-            clearInterval(timer);
-        } else {
-            elemento.textContent = Math.floor(inicio);
-        }
-    }, 16);
-}
-
-// Iniciar animação de contadores quando a seção "sobre" ficar visível
-document.addEventListener('DOMContentLoaded', function() {
-    const sobreSection = document.querySelector('.sobre');
-    
-    if (sobreSection) {
-        const observerOptions = {
-            threshold: 0.5
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const statBoxes = entry.target.querySelectorAll('.stat-box h3');
-                    statBoxes.forEach(box => {
-                        const texto = box.textContent;
-                        const numero = parseInt(texto.replace(/\D/g, ''));
-                        
-                        if (!isNaN(numero)) {
-                            animarContador(box, numero);
-                        }
-                    });
-                    
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        observer.observe(sobreSection);
-    }
-});
-
-/* ==================== EFEITO HOVER NAS IMAGENS ==================== */
-
-document.addEventListener('DOMContentLoaded', function() {
-    const images = document.querySelectorAll('.equipamento-card img, .obra-card img');
-    
-    images.forEach(img => {
-        img.addEventListener('mouseenter', function() {
-            this.style.transform = 'scale(1.05)';
-        });
-        
-        img.addEventListener('mouseleave', function() {
-            this.style.transform = 'scale(1)';
-        });
-    });
-});
-
-/* ==================== VALIDAÇÃO DE FORMULÁRIO EM TEMPO REAL ==================== */
-
-document.addEventListener('DOMContentLoaded', function() {
-    const inputs = document.querySelectorAll('.orcamento-form input, .orcamento-form select, .orcamento-form textarea');
-    
-    inputs.forEach(input => {
-        input.addEventListener('blur', function() {
-            validarCampo(this);
-        });
-        
-        input.addEventListener('focus', function() {
-            this.style.borderColor = '#1e40af';
-        });
-    });
-});
-
-function validarCampo(campo) {
-    if (campo.value.trim() === '') {
-        campo.style.borderColor = '#ef4444';
-        campo.style.backgroundColor = '#fef2f2';
-    } else {
-        campo.style.borderColor = '#10b981';
-        campo.style.backgroundColor = '#f0fdf4';
-    }
-}
-
-/* ==================== ANIMAÇÃO CSS KEYFRAMES ==================== */
-
+/* ==================== ANIMAÇÕES CSS DINÂMICAS ==================== */
 const style = document.createElement('style');
 style.textContent = `
-    @keyframes slideIn {
-        from {
-            transform: translateX(400px);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
+    @keyframes slideInRight {
+        from { transform: translateX(120%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
     }
-
-    @keyframes slideOut {
-        from {
-            transform: translateX(0);
-            opacity: 1;
-        }
-        to {
-            transform: translateX(400px);
-            opacity: 0;
-        }
+    @keyframes slideOutRight {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(120%); opacity: 0; }
     }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
+    .nav-link.active {
+        color: #FF8C00 !important;
     }
-
-    .animate-in {
-        animation: fadeIn 0.6s ease forwards;
+    .nav-link.active::after {
+        width: 80% !important;
     }
 `;
 document.head.appendChild(style);
 
-/* ==================== DETECÇÃO DE NAVEGADOR ==================== */
-
-function detectarNavegador() {
-    const ua = navigator.userAgent;
-    
-    if (ua.indexOf('Chrome') > -1) {
-        console.log('Navegador: Chrome');
-    } else if (ua.indexOf('Safari') > -1) {
-        console.log('Navegador: Safari');
-    } else if (ua.indexOf('Firefox') > -1) {
-        console.log('Navegador: Firefox');
-    }
-}
-
-/* ==================== SCROLL PARA TOPO ==================== */
-
-// Criar botão "Voltar ao Topo"
+/* ==================== BOTÃO VOLTAR AO TOPO ==================== */
 const botaoTopo = document.createElement('button');
 botaoTopo.id = 'botaoTopo';
-botaoTopo.innerHTML = '↑';
+botaoTopo.innerHTML = '<i class="fa-solid fa-chevron-up"></i>';
 botaoTopo.style.cssText = `
     position: fixed;
-    bottom: 100px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    background-color: #1e40af;
-    color: white;
+    bottom: 6.5rem;
+    right: 2rem;
+    width: 46px;
+    height: 46px;
+    background: linear-gradient(135deg, #FF8C00, #FFB800);
+    color: #000;
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    font-size: 24px;
+    font-size: 1rem;
     display: none;
-    z-index: 49;
+    z-index: 499;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(255, 140, 0, 0.4);
+    align-items: center;
+    justify-content: center;
 `;
-
 document.body.appendChild(botaoTopo);
 
-// Mostrar/ocultar botão ao scroll
-window.addEventListener('scroll', function() {
-    if (window.pageYOffset > 300) {
-        botaoTopo.style.display = 'block';
+window.addEventListener('scroll', function () {
+    if (window.pageYOffset > 400) {
+        botaoTopo.style.display = 'flex';
     } else {
         botaoTopo.style.display = 'none';
     }
 });
 
-// Scroll para topo ao clicar
-botaoTopo.addEventListener('click', function() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
+botaoTopo.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// Hover effect no botão
-botaoTopo.addEventListener('mouseenter', function() {
-    this.style.backgroundColor = '#1e3a8a';
-    this.style.transform = 'scale(1.1)';
+botaoTopo.addEventListener('mouseenter', function () {
+    this.style.transform = 'scale(1.1) translateY(-2px)';
+    this.style.boxShadow = '0 6px 25px rgba(255, 140, 0, 0.6)';
 });
 
-botaoTopo.addEventListener('mouseleave', function() {
-    this.style.backgroundColor = '#1e40af';
-    this.style.transform = 'scale(1)';
+botaoTopo.addEventListener('mouseleave', function () {
+    this.style.transform = 'scale(1) translateY(0)';
+    this.style.boxShadow = '0 4px 15px rgba(255, 140, 0, 0.4)';
 });
-
-/* ==================== INICIALIZAÇÃO GERAL ==================== */
 
 console.log('Site Pioneira carregado com sucesso!');
