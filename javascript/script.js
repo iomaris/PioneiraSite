@@ -279,7 +279,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     blogCards.forEach(card => {
         card.addEventListener('click', function () {
-            window.location.href = 'blog.html';
+            window.location.href = 'index.html#blog';
         });
     });
 
