@@ -272,3 +272,28 @@ botaoTopo.addEventListener('mouseleave', function () {
 });
 
 console.log('Site Pioneira carregado com sucesso!');
+
+/* ==================== REDIRECIONAMENTO DE POSTS DO BLOG ==================== */
+document.addEventListener('DOMContentLoaded', function () {
+    const blogCards = document.querySelectorAll('.blog-card');
+    
+    blogCards.forEach(card => {
+        card.addEventListener('click', function () {
+            window.location.href = 'blog.html';
+        });
+    });
+
+    const blogPostCards = document.querySelectorAll('.blog-post-card');
+    
+    blogPostCards.forEach(card => {
+        card.addEventListener('click', function () {
+            const title = card.querySelector('.blog-post-title').textContent;
+            const category = card.querySelector('.blog-post-category').textContent;
+            localStorage.setItem('selectedBlogPost', JSON.stringify({
+                title: title,
+                category: category
+            }));
+            window.location.href = '#' + category.toLowerCase();
+        });
+    });
+});

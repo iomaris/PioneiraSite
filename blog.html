@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Pioneira - Andaimes e Equipamentos</title>
+    <meta name="description" content="Leia artigos, dicas e conteúdos sobre construção civil, segurança em obras e equipamentos.">
+    <meta name="keywords" content="blog, dicas, construção civil, andaimes, segurança">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* ==================== BLOG PAGE STYLES ==================== */
+        .blog-page-hero {
+            background: linear-gradient(135deg, rgba(255,140,0,0.1), rgba(255,184,0,0.05));
+            border-bottom: 1px solid rgba(255,140,0,0.2);
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+        }
+
+        .blog-page-hero h1 {
+            font-size: 2.8rem;
+            font-family: var(--font-display);
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .blog-page-hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+        }
+
+        .blog-filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .blog-filter-btn {
+            padding: 0.6rem 1.5rem;
+            border: 2px solid rgba(255,140,0,0.3);
+            background: transparent;
+            color: var(--text-light);
+            border-radius: 2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .blog-filter-btn:hover,
+        .blog-filter-btn.active {
+            border-color: var(--primary-color);
+            background: rgba(255,140,0,0.1);
+            color: var(--primary-color);
+        }
+
+        .blog-posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .blog-post-card {
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-post-card:hover {
+            border-color: rgba(255,140,0,0.4);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .blog-post-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .blog-post-card:hover .blog-post-image {
+            transform: scale(1.05);
+        }
+
+        .blog-post-body {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .blog-post-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .blog-post-category {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #000;
+            padding: 0.3rem 0.8rem;
+            border-radius: 2rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .blog-post-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .blog-post-date i {
+            color: var(--primary-color);
+        }
+
+        .blog-post-title {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+            font-family: var(--font-display);
+        }
+
+        .blog-post-excerpt {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+
+        .blog-post-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,140,0,0.1);
+        }
+
+        .blog-post-author {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .blog-post-author-avatar {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, rgba(255,140,0,0.2), rgba(255,184,0,0.1));
+            border: 1px solid rgba(255,140,0,0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
+
+        .blog-post-author-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-post-author-name {
+            font-size: 0.85rem;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .blog-post-author-role {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .blog-post-read-time {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .blog-post-read-time i {
+            color: var(--primary-color);
+        }
+
+        .blog-post-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .blog-post-link:hover {
+            color: var(--secondary-color);
+            gap: 0.8rem;
+        }
+
+        .blog-sidebar {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .blog-sidebar-widget {
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+        }
+
+        .blog-sidebar-widget h3 {
+            font-size: 1.1rem;
+            color: #fff;
+            margin-bottom: 1.5rem;
+            font-family: var(--font-display);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .blog-sidebar-widget h3 i {
+            color: var(--primary-color);
+        }
+
+        .blog-recent-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .blog-recent-item {
+            display: flex;
+            gap: 1rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid rgba(255,140,0,0.1);
+        }
+
+        .blog-recent-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .blog-recent-number {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, rgba(255,140,0,0.2), rgba(255,184,0,0.1));
+            border: 1px solid rgba(255,140,0,0.3);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .blog-recent-content {
+            flex: 1;
+        }
+
+        .blog-recent-title {
+            font-size: 0.9rem;
+            color: #fff;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .blog-recent-date {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .blog-categories-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .blog-category-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1rem;
+            background: rgba(255,140,0,0.05);
+            border: 1px solid rgba(255,140,0,0.15);
+            border-radius: 0.5rem;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .blog-category-item:hover {
+            background: rgba(255,140,0,0.1);
+            border-color: rgba(255,140,0,0.3);
+        }
+
+        .blog-category-name {
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .blog-category-count {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #000;
+            padding: 0.2rem 0.6rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        @media (max-width: 900px) {
+            .blog-posts-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+
+            .blog-sidebar {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .blog-page-hero h1 {
+                font-size: 2rem;
+            }
+
+            .blog-posts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div class="navbar-logo">
+                    <a href="index.html">
+                        <img src="imagens/logo.png" class="logo-img" alt="Pioneira Logo">
+                    </a>
+                </div>
+                <ul class="navbar-menu" id="navbarMenu">
+                    <li><a href="index.html#home" class="nav-link">Home</a></li>
+                    <li><a href="index.html#empresa" class="nav-link">Empresa</a></li>
+                    <li><a href="index.html#equipamentos" class="nav-link">Equipamentos</a></li>
+                    <li><a href="index.html#locacao" class="nav-link">Locação</a></li>
+                    <li><a href="index.html#obras" class="nav-link">Obras</a></li>
+                    <li><a href="index.html#clientes" class="nav-link">Clientes</a></li>
+                    <li><a href="blog.html" class="nav-link">Blog</a></li>
+                    <li><a href="index.html#contato" class="nav-link">Contato</a></li>
+                </ul>
+
+                <div class="navbar-right">
+                    <a href="index.html#orcamento" class="btn btn-nav-cta">
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                        Orçamento
+                    </a>
+                    <button class="navbar-toggle" id="navbarToggle" aria-label="Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ==================== BLOG HERO ==================== -->
+    <section class="blog-page-hero">
+        <div class="container">
+            <h1>Blog &amp; Dicas</h1>
+            <p>Fique por dentro das novidades, tendências e melhores práticas da construção civil. Conteúdo atualizado regularmente com dicas de especialistas.</p>
+        </div>
+    </section>
+
+    <!-- ==================== BLOG FILTERS ==================== -->
+    <section class="blog-section">
+        <div class="container">
+            <div class="blog-filters">
+                <button class="blog-filter-btn active" onclick="filterPosts('todos')">Todos os Posts</button>
+                <button class="blog-filter-btn" onclick="filterPosts('dicas')">Dicas</button>
+                <button class="blog-filter-btn" onclick="filterPosts('seguranca')">Segurança</button>
+                <button class="blog-filter-btn" onclick="filterPosts('tecnico')">Técnico</button>
+                <button class="blog-filter-btn" onclick="filterPosts('novidades')">Novidades</button>
+            </div>
+
+            <!-- ==================== BLOG POSTS GRID ==================== -->
+            <div class="blog-posts-grid">
+                <!-- POST 1 -->
+                <article class="blog-post-card" data-category="dicas" onclick="window.location.href='blog-post-1.html'" style="cursor: pointer;">
+                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=500&h=280&fit=crop" alt="Como Escolher o Andaime Ideal" class="blog-post-image">
+                    <div class="blog-post-body">
+                        <div class="blog-post-header">
+                            <span class="blog-post-category">Dicas</span>
+                        </div>
+                        <h2 class="blog-post-title">Como Escolher o Andaime Ideal para sua Obra</h2>
+                        <p class="blog-post-excerpt">Descubra os principais tipos de andaimes disponíveis no mercado e como escolher o mais adequado para o seu projeto. Neste artigo, abordamos as características técnicas, capacidade de carga e aplicações práticas de cada modelo.</p>
+                        <div class="blog-post-footer">
+                            <div class="blog-post-author">
+                                <div class="blog-post-author-avatar"><i class="fa-solid fa-user"></i></div>
+                                <div class="blog-post-author-info">
+                                    <span class="blog-post-author-name">Equipe Pioneira</span>
+                                    <span class="blog-post-author-role">Especialista</span>
+                                </div>
+                            </div>
+                            <span class="blog-post-read-time"><i class="fa-solid fa-clock"></i> 5 min</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- POST 2 -->
+                <article class="blog-post-card" data-category="seguranca" onclick="window.location.href='blog-post-2.html'" style="cursor: pointer;">
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=280&fit=crop" alt="Segurança em Obras" class="blog-post-image">
+                    <div class="blog-post-body">
+                        <div class="blog-post-header">
+                            <span class="blog-post-category">Segurança</span>
+                        </div>
+                        <h2 class="blog-post-title">Segurança em Obras: Normas e Certificações Essenciais</h2>
+                        <p class="blog-post-excerpt">Conheça as principais normas de segurança que todos os equipamentos devem atender. Abordamos as certificações obrigatórias, inspeções periódicas e práticas recomendadas para garantir a segurança da sua equipe.</p>
+                        <div class="blog-post-footer">
+                            <div class="blog-post-author">
+                                <div class="blog-post-author-avatar"><i class="fa-solid fa-user"></i></div>
+                                <div class="blog-post-author-info">
+                                    <span class="blog-post-author-name">Equipe Pioneira</span>
+                                    <span class="blog-post-author-role">Especialista</span>
+                                </div>
+                            </div>
+                            <span class="blog-post-read-time"><i class="fa-solid fa-clock"></i> 7 min</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- POST 3 -->
+                <article class="blog-post-card" data-category="tecnico" onclick="window.location.href='blog-post-3.html'" style="cursor: pointer;">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&h=280&fit=crop" alt="Escoramento vs Andaime" class="blog-post-image">
+                    <div class="blog-post-body">
+                        <div class="blog-post-header">
+                            <span class="blog-post-category">Técnico</span>
+                        </div>
+                        <h2 class="blog-post-title">Diferença entre Escoramento e Andaime: Guia Técnico</h2>
+                        <p class="blog-post-excerpt">Entenda as diferenças técnicas, aplicações e capacidades entre escoramentos e andaimes. Este guia prático ajuda você a identificar qual equipamento é mais adequado para cada etapa da sua construção.</p>
+                        <div class="blog-post-footer">
+                            <div class="blog-post-author">
+                                <div class="blog-post-author-avatar"><i class="fa-solid fa-user"></i></div>
+                                <div class="blog-post-author-info">
+                                    <span class="blog-post-author-name">Equipe Pioneira</span>
+                                    <span class="blog-post-author-role">Especialista</span>
+                                </div>
+                            </div>
+                            <span class="blog-post-read-time"><i class="fa-solid fa-clock"></i> 6 min</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- POST 4 -->
+                <article class="blog-post-card" data-category="dicas">
+                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=500&h=280&fit=crop" alt="Manutenção de Equipamentos" class="blog-post-image">
+                    <div class="blog-post-body">
+                        <div class="blog-post-header">
+                            <span class="blog-post-category">Dicas</span>
+                        </div>
+                        <h2 class="blog-post-title">Manutenção Preventiva: Prolongue a Vida Útil dos Equipamentos</h2>
+                        <p class="blog-post-excerpt">Saiba como realizar a manutenção correta dos seus equipamentos de locação. Dicas práticas sobre limpeza, inspeção e armazenamento para garantir durabilidade e segurança máxima.</p>
+                        <div class="blog-post-footer">
+                            <div class="blog-post-author">
+                                <div class="blog-post-author-avatar"><i class="fa-solid fa-user"></i></div>
+                                <div class="blog-post-author-info">
+                                    <span class="blog-post-author-name">Equipe Pioneira</span>
+                                    <span class="blog-post-author-role">Especialista</span>
+                                </div>
+                            </div>
+                            <span class="blog-post-read-time"><i class="fa-solid fa-clock"></i> 5 min</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- POST 5 -->
+                <article class="blog-post-card" data-category="novidades">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&h=280&fit=crop" alt="Novas Tecnologias" class="blog-post-image">
+                    <div class="blog-post-body">
+                        <div class="blog-post-header">
+                            <span class="blog-post-category">Novidades</span>
+                        </div>
+                        <h2 class="blog-post-title">Novas Tecnologias em Equipamentos de Construção</h2>
+                        <p class="blog-post-excerpt">Conheça as inovações tecnológicas que estão transformando o mercado de equipamentos para construção civil. Desde sistemas de rastreamento até materiais mais resistentes e leves.</p>
+                        <div class="blog-post-footer">
+                            <div class="blog-post-author">
+                                <div class="blog-post-author-avatar"><i class="fa-solid fa-user"></i></div>
+                                <div class="blog-post-author-info">
+                                    <span class="blog-post-author-name">Equipe Pioneira</span>
+                                    <span class="blog-post-author-role">Especialista</span>
+                                </div>
+                            </div>
+                            <span class="blog-post-read-time"><i class="fa-solid fa-clock"></i> 8 min</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- POST 6 -->
+                <article class="blog-post-card" data-category="seguranca">
+                    <img src="https://images.unsplash.com/photo-1581092916550-e323be2ae537?w=500&h=280&fit=crop" alt="EPI em Obras" class="blog-post-image">
+                    <div class="blog-post-body">
+                        <div class="blog-post-header">
+                            <span class="blog-post-category">Segurança</span>
+                            <span class="blog-post-date"><i class="fa-regular fa-calendar"></i> 01 Mar 2026</span>
+                        </div>
+                        <h2 class="blog-post-title">EPI Obrigatório: O que Você Precisa Saber</h2>
+                        <p class="blog-post-excerpt">Lista completa de Equipamentos de Proteção Individual obrigatórios em obras. Aprenda sobre cada tipo de EPI, sua função, e como garantir que sua equipe esteja sempre protegida.</p>
+                        <div class="blog-post-footer">
+                            <div class="blog-post-author">
+                                <div class="blog-post-author-avatar"><i class="fa-solid fa-user"></i></div>
+                                <div class="blog-post-author-info">
+                                    <span class="blog-post-author-name">Equipe Pioneira</span>
+                                    <span class="blog-post-author-role">Especialista</span>
+                                </div>
+                            </div>
+                            <span class="blog-post-read-time"><i class="fa-solid fa-clock"></i> 6 min</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- ==================== BLOG SIDEBAR ==================== -->
+            <div class="blog-sidebar">
+                <!-- RECENT POSTS WIDGET -->
+                <div class="blog-sidebar-widget">
+                    <h3><i class="fa-solid fa-fire"></i> Posts Recentes</h3>
+                    <div class="blog-recent-list">
+                        <div class="blog-recent-item">
+                            <div class="blog-recent-number">1</div>
+                            <div class="blog-recent-content">
+                                <div class="blog-recent-title">Como Escolher o Andaime Ideal</div>
+                                <div class="blog-recent-date">15 Mar 2026</div>
+                            </div>
+                        </div>
+                        <div class="blog-recent-item">
+                            <div class="blog-recent-number">2</div>
+                            <div class="blog-recent-content">
+                                <div class="blog-recent-title">Segurança em Obras: Normas</div>
+                                <div class="blog-recent-date">12 Mar 2026</div>
+                            </div>
+                        </div>
+                        <div class="blog-recent-item">
+                            <div class="blog-recent-number">3</div>
+                            <div class="blog-recent-content">
+                                <div class="blog-recent-title">Escoramento vs Andaime</div>
+                                <div class="blog-recent-date">10 Mar 2026</div>
+                            </div>
+                        </div>
+                        <div class="blog-recent-item">
+                            <div class="blog-recent-number">4</div>
+                            <div class="blog-recent-content">
+                                <div class="blog-recent-title">Manutenção Preventiva</div>
+                                <div class="blog-recent-date">08 Mar 2026</div>
+                            </div>
+                        </div>
+                        <div class="blog-recent-item">
+                            <div class="blog-recent-number">5</div>
+                            <div class="blog-recent-content">
+                                <div class="blog-recent-title">Novas Tecnologias</div>
+                                <div class="blog-recent-date">05 Mar 2026</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CATEGORIES WIDGET -->
+                <div class="blog-sidebar-widget">
+                    <h3><i class="fa-solid fa-tag"></i> Categorias</h3>
+                    <div class="blog-categories-list">
+                        <div class="blog-category-item" onclick="filterPosts('dicas')">
+                            <span class="blog-category-name">Dicas</span>
+                            <span class="blog-category-count">8</span>
+                        </div>
+                        <div class="blog-category-item" onclick="filterPosts('seguranca')">
+                            <span class="blog-category-name">Segurança</span>
+                            <span class="blog-category-count">12</span>
+                        </div>
+                        <div class="blog-category-item" onclick="filterPosts('tecnico')">
+                            <span class="blog-category-name">Técnico</span>
+                            <span class="blog-category-count">6</span>
+                        </div>
+                        <div class="blog-category-item" onclick="filterPosts('novidades')">
+                            <span class="blog-category-name">Novidades</span>
+                            <span class="blog-category-count">5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CTA SECTION ==================== -->
+    <section style="background: var(--dark-secondary); padding: 4rem 0; margin-top: 4rem; border-top: 1px solid rgba(255,140,0,0.2);">
+        <div class="container" style="text-align: center;">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem;">Pronto para sua próxima obra?</h2>
+            <p style="color: var(--text-light); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">Solicite um orçamento gratuito e descubra como a Pioneira pode ajudar no sucesso do seu projeto.</p>
+            <a href="index.html#orcamento" class="btn btn-primary">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+                Solicitar Orçamento
+            </a>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section footer-brand">
+                    <img src="imagens/logo.png" alt="Pioneira Logo" class="footer-logo">
+                    <p>Locação e venda de equipamentos para construção civil em Manaus. 40 anos de tradição e excelência.</p>
+                    <div class="footer-socials">
+                        <a href="https://wa.me/559291364240" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/pioneira_andaimes_/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" target="_blank" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html#home"><i class="fa-solid fa-chevron-right"></i> Home</a></li>
+                        <li><a href="index.html#empresa"><i class="fa-solid fa-chevron-right"></i> Empresa</a></li>
+                        <li><a href="index.html#equipamentos"><i class="fa-solid fa-chevron-right"></i> Equipamentos</a></li>
+                        <li><a href="index.html#locacao"><i class="fa-solid fa-chevron-right"></i> Locação</a></li>
+                        <li><a href="index.html#obras"><i class="fa-solid fa-chevron-right"></i> Obras</a></li>
+                        <li><a href="index.html#contato"><i class="fa-solid fa-chevron-right"></i> Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Equipamentos</h4>
+                    <ul>
+                        <li><a href="index.html#equipamentos"><i class="fa-solid fa-chevron-right"></i> Andaimes Tubulares</a></li>
+                        <li><a href="index.html#equipamentos"><i class="fa-solid fa-chevron-right"></i> Escoramentos</a></li>
+                        <li><a href="index.html#equipamentos"><i class="fa-solid fa-chevron-right"></i> Betoneiras</a></li>
+                        <li><a href="index.html#equipamentos"><i class="fa-solid fa-chevron-right"></i> Plataformas</a></li>
+                        <li><a href="index.html#equipamentos"><i class="fa-solid fa-chevron-right"></i> Compactadores</a></li>
+                        <li><a href="index.html#equipamentos"><i class="fa-solid fa-chevron-right"></i> Escadas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <div class="footer-contact-list">
+                        <div class="footer-contact-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>Av. Arq. José Henriques B. Rodrigues, 3541 - Monte das Oliveiras, Manaus/AM</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <a href="tel:+559291364240">(92) 9136-4240</a>
+                        </div>
+                        <div class="footer-contact-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <a href="mailto:pioneiraandaimes2@gmail.com">pioneiraandaimes2@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Pioneira Andaimes. Todos os direitos reservados.</p>
+                <p>Desenvolvido com <i class="fa-solid fa-heart" style="color: var(--primary-color);"></i> em Manaus</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Flutuante -->
+    <a href="https://wa.me/559291364240" class="whatsapp-float" target="_blank" title="Fale pelo WhatsApp">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a6.963 6.963 0 0 0-6.923 6.987c0 1.547.38 3.061 1.105 4.413L2.9 22.05l4.9-1.577c1.283.658 2.729 1.007 4.242 1.007h.004c3.857 0 6.996-3.137 6.992-6.99 0-1.863-.723-3.613-2.04-4.929-1.318-1.317-3.073-2.041-4.929-2.041"/>
+        </svg>
+        <span class="whatsapp-pulse"></span>
+    </a>
+
+    <script src="javascript/script.js"></script>
+    <script>
+        // Blog filter function
+        function filterPosts(category) {
+            const posts = document.querySelectorAll('.blog-post-card');
+            const buttons = document.querySelectorAll('.blog-filter-btn');
+
+            // Update active button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Filter posts
+            posts.forEach(post => {
+                if (category === 'todos' || post.dataset.category === category) {
+                    post.style.display = 'block';
+                    setTimeout(() => {
+                        post.style.opacity = '1';
+                        post.style.transform = 'scale(1)';
+                    }, 10);
+                } else {
+                    post.style.opacity = '0';
+                    post.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        post.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+
+        // Add transition styles
+        document.querySelectorAll('.blog-post-card').forEach(card => {
+            card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        });
+    </script>
+</body>
+</html>
