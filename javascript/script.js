@@ -157,15 +157,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-function validarTelefone(telefone) {
-    const regex = /^[\d\s\-\(\)]+$/;
-    return regex.test(telefone) && telefone.replace(/\D/g, '').length >= 10;
-}
 
-function enviarOrcamento(dados) {
-    mostrarNotificacao('Orçamento enviado com sucesso! Entraremos em contato em breve.', 'sucesso');
-    document.getElementById('orcamentoForm').reset();
-}
+
+
 
 /* ==================== NOTIFICAÇÕES ==================== */
 function mostrarNotificacao(mensagem, tipo) {
