@@ -1,84 +1,52 @@
 /* ==================== FORMULÁRIO DE ORÇAMENTO COM FORMSPREE ==================== */
+/* ==================== FORMULÁRIO DE ORÇAMENTO COM FORMSPREE ==================== */
 document.addEventListener('DOMContentLoaded', function () {
     const orcamentoForm = document.getElementById('orcamentoForm');
 
     if (orcamentoForm) {
         // Configurar o formulário para usar Formspree
-        orcamentoForm.setAttribute('action', 'https://formspree.io/f/YOUR_FORMSPREE_ID');
+        // SUBSTITUA 'YOUR_FORMSPREE_ID' PELO SEU ID REAL
+        orcamentoForm.setAttribute('action', 'https://formspree.io/f/YOUR_FORMSPREE_ID' );
         orcamentoForm.setAttribute('method', 'POST');
 
         orcamentoForm.addEventListener('submit', function (e) {
-            const formData = {
-                nome: document.getElementById('nome').value,
-                empresa: document.getElementById('empresa').value,
-                telefone: document.getElementById('telefone').value,
-                equipamento: document.getElementById('equipamento').value,
-                tempo: document.getElementById('tempo').value,
-                mensagem: document.getElementById('mensagem').value
-            };
+            const nome = document.getElementById('nome').value;
+            const telefone = document.getElementById('telefone').value;
+            const equipamento = document.getElementById('equipamento').value;
+            const tempo = document.getElementById('tempo').value;
 
-            // Validação de campos obrigatórios
-            if (!formData.nome || !formData.empresa || !formData.telefone || !formData.equipamento || !formData.tempo) {
+            // Validação: Empresa NÃO é mais obrigatória
+            if (!nome || !telefone || !equipamento || !tempo) {
                 e.preventDefault();
-                mostrarNotificacao('Por favor, preencha todos os campos obrigatórios!', 'erro');
+                mostrarNotificacao('Por favor, preencha os campos obrigatórios (Nome, Telefone, Equipamento e Tempo)!', 'erro');
                 return;
             }
 
-            // Validação de telefone
-            if (!validarTelefone(formData.telefone)) {
+            if (!validarTelefone(telefone)) {
                 e.preventDefault();
                 mostrarNotificacao('Por favor, insira um telefone válido!', 'erro');
                 return;
             }
 
-            // Se passou nas validações, deixa o formulário ser enviado pelo Formspree
-            mostrarNotificacao('Orçamento enviado com sucesso! Entraremos em contato em breve.', 'sucesso');
+            // Se chegou aqui, o Formspree fará o envio automaticamente
+            mostrarNotificacao('Enviando orçamento...', 'sucesso');
         });
     }
 });
 
-/* ==================== VALIDAÇÃO DE TELEFONE ==================== */
-function validarTelefone(telefone) {
-    const regex = /^[\d\s\-\(\)]+$/;
-    return regex.test(telefone) && telefone.replace(/\D/g, '').length >= 10;
+function validarTelefone(t) {
+    return t.replace(/\D/g, '').length >= 10;
 }
 
-/* ==================== NOTIFICAÇÕES ==================== */
-function mostrarNotificacao(mensagem, tipo) {
-    const notificacao = document.createElement('div');
-    notificacao.style.cssText = `
-        position: fixed;
-        top: 90px;
-        right: 20px;
-        padding: 1rem 1.5rem;
-        border-radius: 0.5rem;
-        color: white;
-        font-weight: 600;
-        font-family: 'Poppins', sans-serif;
-        font-size: 0.9rem;
-        z-index: 9999;
-        max-width: 360px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-        animation: slideInRight 0.4s ease;
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        ${tipo === 'sucesso'
-            ? 'background: linear-gradient(135deg, #10b981, #059669); border-left: 4px solid #34d399;'
-            : 'background: linear-gradient(135deg, #ef4444, #dc2626); border-left: 4px solid #f87171;'}
-    `;
-    notificacao.innerHTML = `
-        <i class="fa-solid ${tipo === 'sucesso' ? 'fa-circle-check' : 'fa-circle-exclamation'}" style="font-size:1.2rem;"></i>
-        <span>${mensagem}</span>
-    `;
-
-    document.body.appendChild(notificacao);
-
-    setTimeout(() => {
-        notificacao.style.animation = 'slideOutRight 0.4s ease forwards';
-        setTimeout(() => notificacao.remove(), 400);
-    }, 5000);
+function mostrarNotificacao(msg, tipo) {
+    const n = document.createElement('div');
+    n.style.cssText = `position:fixed;top:90px;right:20px;padding:1rem;border-radius:0.5rem;color:white;z-index:9999;font-family:sans-serif;${tipo==='sucesso'?'background:#10b981':'background:#ef4444'}`;
+    n.innerHTML = msg;
+    document.body.appendChild(n);
+    setTimeout(() => n.remove(), 4000);
 }
+
+
 
 /* ==================== ANIMAÇÕES CSS DINÂMICAS ==================== */
 const style = document.createElement('style');

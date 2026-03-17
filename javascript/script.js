@@ -125,37 +125,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-/* ==================== FORMULÁRIO DE ORÇAMENTO ==================== */
-document.addEventListener('DOMContentLoaded', function () {
-    const orcamentoForm = document.getElementById('orcamentoForm');
 
-    if (orcamentoForm) {
-        orcamentoForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const formData = {
-                nome: document.getElementById('nome').value,
-                empresa: document.getElementById('empresa').value,
-                telefone: document.getElementById('telefone').value,
-                equipamento: document.getElementById('equipamento').value,
-                tempo: document.getElementById('tempo').value,
-                mensagem: document.getElementById('mensagem').value
-            };
-
-            if (!formData.nome || !formData.empresa || !formData.telefone || !formData.equipamento || !formData.tempo) {
-                mostrarNotificacao('Por favor, preencha todos os campos obrigatórios!', 'erro');
-                return;
-            }
-
-            if (!validarTelefone(formData.telefone)) {
-                mostrarNotificacao('Por favor, insira um telefone válido!', 'erro');
-                return;
-            }
-
-            enviarOrcamento(formData);
-        });
-    }
-});
 
 
 
