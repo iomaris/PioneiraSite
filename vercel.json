@@ -4,7 +4,7 @@
   "public": true,
   "env": {},
   "regions": ["sfo1"],
-  "functions": {},
+
   "redirects": [
     {
       "source": "/index.html",
