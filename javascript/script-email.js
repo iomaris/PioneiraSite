@@ -8,8 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
         orcamentoForm.setAttribute('method', 'POST');
 
         orcamentoForm.addEventListener('submit', function (e) {
-            // Não previne o envio padrão para deixar o Formspree funcionar
-            
             const formData = {
                 nome: document.getElementById('nome').value,
                 empresa: document.getElementById('empresa').value,
@@ -19,24 +17,27 @@ document.addEventListener('DOMContentLoaded', function () {
                 mensagem: document.getElementById('mensagem').value
             };
 
+            // Validação de campos obrigatórios
             if (!formData.nome || !formData.empresa || !formData.telefone || !formData.equipamento || !formData.tempo) {
                 e.preventDefault();
                 mostrarNotificacao('Por favor, preencha todos os campos obrigatórios!', 'erro');
                 return;
             }
 
+            // Validação de telefone
             if (!validarTelefone(formData.telefone)) {
                 e.preventDefault();
                 mostrarNotificacao('Por favor, insira um telefone válido!', 'erro');
                 return;
             }
 
-            // Mostrar notificação de sucesso após envio
+            // Se passou nas validações, deixa o formulário ser enviado pelo Formspree
             mostrarNotificacao('Orçamento enviado com sucesso! Entraremos em contato em breve.', 'sucesso');
         });
     }
 });
 
+/* ==================== VALIDAÇÃO DE TELEFONE ==================== */
 function validarTelefone(telefone) {
     const regex = /^[\d\s\-\(\)]+$/;
     return regex.test(telefone) && telefone.replace(/\D/g, '').length >= 10;
@@ -78,3 +79,17 @@ function mostrarNotificacao(mensagem, tipo) {
         setTimeout(() => notificacao.remove(), 400);
     }, 5000);
 }
+
+/* ==================== ANIMAÇÕES CSS DINÂMICAS ==================== */
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideInRight {
+        from { transform: translateX(120%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slideOutRight {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(120%); opacity: 0; }
+    }
+`;
+document.head.appendChild(style);
