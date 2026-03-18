@@ -149,9 +149,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-
-
-
 /* ==================== NOTIFICAÇÕES ==================== */
 function mostrarNotificacao(mensagem, tipo) {
     const notificacao = document.createElement('div');
