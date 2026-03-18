@@ -1,12 +1,12 @@
 /* ==================== FORMULÁRIO DE ORÇAMENTO COM FORMSPREE ==================== */
-/* ==================== FORMULÁRIO DE ORÇAMENTO COM FORMSPREE ==================== */
+
 document.addEventListener('DOMContentLoaded', function () {
     const orcamentoForm = document.getElementById('orcamentoForm');
 
     if (orcamentoForm) {
         // Configurar o formulário para usar Formspree
         // SUBSTITUA 'YOUR_FORMSPREE_ID' PELO SEU ID REAL
-        orcamentoForm.setAttribute('action', 'https://formspree.io/f/YOUR_FORMSPREE_ID' );
+        orcamentoForm.setAttribute('action', 'https://formspree.io/f/xlgpporo' );
         orcamentoForm.setAttribute('method', 'POST');
 
         orcamentoForm.addEventListener('submit', function (e) {
