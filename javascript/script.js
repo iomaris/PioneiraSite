@@ -125,8 +125,29 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+/* LÓGICA DO BANNER DE COOKIES */
+document.addEventListener('DOMContentLoaded', function() {
+    const banner = document.getElementById('cookie-banner');
+    const acceptBtn = document.getElementById('accept-cookies');
+    const declineBtn = document.getElementById('decline-cookies');
 
+    // Verifica se o usuário já tomou uma decisão
+    if (!localStorage.getItem('cookieConsent')) {
+        setTimeout(() => {
+            banner.classList.add('show');
+        }, 2000); // Aparece após 2 segundos
+    }
 
+    acceptBtn.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'accepted');
+        banner.classList.remove('show');
+    });
+
+    declineBtn.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'declined');
+        banner.classList.remove('show');
+    });
+});
 
 
 
