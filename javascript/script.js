@@ -131,23 +131,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const acceptBtn = document.getElementById('accept-cookies');
     const declineBtn = document.getElementById('decline-cookies');
 
-    // Verifica se o usuário já tomou uma decisão
-    if (!localStorage.getItem('cookieConsent')) {
-        setTimeout(() => {
-            banner.classList.add('show');
-        }, 2000); // Aparece após 2 segundos
+    // Só executa se os elementos existirem na página
+    if (banner && acceptBtn && declineBtn) {
+        // Verifica se o usuário já tomou uma decisão
+        if (!localStorage.getItem('cookieConsent')) {
+            setTimeout(() => {
+                banner.classList.add('show');
+            }, 2000); // Aparece após 2 segundos
+        }
+
+        acceptBtn.addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'accepted');
+            banner.classList.remove('show');
+        });
+
+        declineBtn.addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'declined');
+            banner.classList.remove('show');
+        });
     }
-
-    acceptBtn.addEventListener('click', () => {
-        localStorage.setItem('cookieConsent', 'accepted');
-        banner.classList.remove('show');
-    });
-
-    declineBtn.addEventListener('click', () => {
-        localStorage.setItem('cookieConsent', 'declined');
-        banner.classList.remove('show');
-    });
 });
+
 
 /* ==================== NOTIFICAÇÕES ==================== */
 function mostrarNotificacao(mensagem, tipo) {
